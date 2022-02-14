@@ -100,55 +100,55 @@
             <p style="color: #2b7a78;">Sorry, we couldn't find what you're looking for...</p>
         </div> --}}
         {{-- @else --}}
-        {{-- @foreach ($movies as $res) --}}
+        @foreach ($movies as $mov)
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="card shadow bg-white rounded" id="hoverImage">
-                {{-- <a href="{{ url('restaurant/'.$res['id']) }}" target="_blank"> --}}
-                <a href="#" target="_blank">
-                    {{-- @if (empty($res['image'])) --}}
+                <a href="{{ url('movie/'.$mov['id']) }}" target="_blank">
+                {{-- <a href="#" target="_blank"> --}}
+                    {{-- @if (empty($mov['image'])) --}}
                     <img class="card-img-top" src="https://via.placeholder.com/350x250" alt="Card image cap1">
                     {{-- @else
-                    <img class="card-img-top" src="images/{{$res['image']}}" alt="Card image cap2">
+                    <img class="card-img-top" src="images/{{$mov['image']}}" alt="Card image cap2">
                     @endif --}}
                     <div class="overlay">
                         <div class="readMore">MORE DETAILS</div>
                     </div>
                 </a>
                 <div class="card-body pb-0" style="background: #8860D0;">
-                    <a href="#" target="_blank" class="text-decoration-none">
-                        {{-- <a href="{{ url('restaurant/'.$res['id']) }}" target="_blank"> --}}
-                        <h5 class="card-title text-uppercase text-light">Title
-                            {{-- {{ $res['name'] }} --}}
+                    {{-- <a href="#" target="_blank" class="text-decoration-none"> --}}
+                    <a href="{{ url('movie/'.$mov['id']) }}" target="_blank" class="text-decoration-none">
+                        <h5 class="card-title text-uppercase text-light">{{ $mov['title'] }}
                         </h5>
-                        {{-- @if ($res['reviewCount'] > 0)
+                        {{-- @if ($mov['reviewCount'] > 0) --}}
                             <h5 class="card-title mb-0" style="color: orange;">
-                                @for ($i = 0; $i < round(($res['totalScore']/$res['reviewCount'])/3); $i++)
+                                {{-- @for ($i = 0; $i < round(($mov['totalScore']/$mov['reviewCount'])/3); $i++)
                                     <span class="fa fa-star checked" style="font-size: 15px;"></span>
                                 @endfor
-                                @for ($i = 0; $i < 5-round(($res['totalScore']/$res['reviewCount'])/3); $i++)
+                                @for ($i = 0; $i < 5-round(($mov['totalScore']/$mov['reviewCount'])/3); $i++)
                                     <span class="fa fa-star" style="font-size: 15px; color: grey;"></span>
-                                @endfor
+                                @endfor --}}
+                                <span class="fa fa-star checked" style="font-size: 15px;"></span>
+                                <span class="fa fa-star checked" style="font-size: 15px;"></span>
+                                <span class="fa fa-star checked" style="font-size: 15px;"></span>
+                                <span class="fa fa-star checked" style="font-size: 15px;"></span>
+                                <span class="fa fa-star" style="font-size: 15px; color: #F8F9FA;"></span>
                             </h5>
-                        @else
+                        {{-- @else
                         <h5 class="card-title mb-0 text-light">&nbsp;</h5>
                         @endif --}}
                     </a>
                 </div>
                 <div class="card-footer border-0" style="background: #8860D0;">
                     <div class="row">
-                        <div class="col-6 card-text text-light text-uppercase">
-                            Category1
-                                {{-- {{ $res['foodType']}} --}}
+                        <div class="col-6 card-text text-light text-uppercase">{{ $mov['genre']}}
                         </div>
-                        {{-- <div class="col-6 card-text text-light text-right text-uppercase"><i
-                                class="fas fa-map-marker-alt"></i>&nbsp;Category2
-                                {{ $res['postcode']}}
-                        </div> --}}
+                        <div class="col-6 card-text text-light text-right text-uppercase">{{ $mov['year']}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        {{-- @endforeach --}}
+        @endforeach
         {{-- @endif --}}
         <!-- <div class="container mt-4 mb-4">
             <button type="button" class="btn btn-warning btn-lg btn-block">More movies</button>

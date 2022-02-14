@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::get('/home', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::get('/home', [HomeController::class, 'show']);       //display all movies
