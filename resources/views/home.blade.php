@@ -71,7 +71,7 @@
                     </div>
                 </div> --}}
                 <div class="input-group input-group-lg mb-3">
-                    <input type="text" class="form-control" placeholder="Search for movies..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <input type="text" name="search" class="form-control" placeholder="Search for movies..." aria-label="Recipient's username" aria-describedby="button-addon2">
                     <button class="btn btn-outline-light btn-lg" type="submit"><i class="fas fa-search"></i>&nbsp;Search</button>
                   </div>
             </form>
@@ -94,12 +94,12 @@
     <hr>
     <!-- <div class="row d-flex justify-content-start shadow p-4 mb-5 bg-white rounded" style="margin: 35px 30px 0;"> -->
     <div class="row" style="margin: 30px 30px 10px;">
-        {{-- @if (count($movies) == 0) --}}
-        {{-- <div class="col-12 text-center pt-5 pb-5">
-            <h1 style="color: #2b7a78;">No results found :(</h1>
-            <p style="color: #2b7a78;">Sorry, we couldn't find what you're looking for...</p>
-        </div> --}}
-        {{-- @else --}}
+        @if (count($movies) == 0)
+        <div class="col-12 text-center pt-5 pb-5">
+            <h1 style="color: #8860D0;">No results found :(</h1>
+            <p style="color: #8860D0;">Sorry, we couldn't find what you're looking for...</p>
+        </div>
+        @else
         @foreach ($movies as $mov)
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="card shadow bg-white rounded" id="hoverImage">
@@ -142,14 +142,14 @@
                     <div class="row">
                         <div class="col-6 card-text text-light text-uppercase">{{ $mov['genre']}}
                         </div>
-                        <div class="col-6 card-text text-light text-right text-uppercase">{{ $mov['year']}}
+                        <div class="col-6 card-text text-light text-end text-uppercase">{{ $mov['language']}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         @endforeach
-        {{-- @endif --}}
+        @endif
         <!-- <div class="container mt-4 mb-4">
             <button type="button" class="btn btn-warning btn-lg btn-block">More movies</button>
         </div> -->
